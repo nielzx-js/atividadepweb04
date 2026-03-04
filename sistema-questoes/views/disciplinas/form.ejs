@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><meta charset="UTF-8"><title>Disciplina</title></head>
+<body>
+  <h2><%= disciplina ? 'Editar' : 'Nova' %> Disciplina</h2>
+  <nav><a href="/">Home</a> | <a href="/disciplinas">Disciplinas</a></nav>
+  <hr>
+  <form method="POST" action="/disciplinas/<%= disciplina ? 'editar/' + disciplina.id : 'nova' %>">
+    <label>Nome: <input type="text" name="nome" value="<%= disciplina ? disciplina.nome : '' %>" required></label><br><br>
+    <label>Carga Horária: <input type="number" name="carga_horaria" value="<%= disciplina ? disciplina.carga_horaria : '' %>" required></label><br><br>
+    <button type="submit">Salvar</button>
+    <a href="/disciplinas">Cancelar</a>
+  </form>
+</body>
+</html>

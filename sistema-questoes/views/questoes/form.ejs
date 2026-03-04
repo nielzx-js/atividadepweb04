@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><meta charset="UTF-8"><title>Questão</title></head>
+<body>
+  <h2><%= questao ? 'Editar' : 'Nova' %> Questão</h2>
+  <nav><a href="/">Home</a> | <a href="/questoes">Questões</a></nav>
+  <hr>
+  <form method="POST" action="/questoes/<%= questao ? 'editar/' + questao.id : 'nova' %>">
+    <label>Enunciado:<br>
+      <textarea name="enunciado" rows="4" cols="50" required><%= questao ? questao.enunciado : '' %></textarea>
+    </label><br><br>
+
+    <label>Alt. A: <input type="text" name="alt_a" value="<%= questao ? questao.alt_a : '' %>" required></label><br>
+    <label>Alt. B: <input type="text" name="alt_b" value="<%= questao ? questao.alt_b : '' %>" required></label><br>
+    <label>Alt. C: <input type="text" name="alt_c" value="<%= questao ? questao.alt_c : '' %>" required></label><br>
+    <label>Alt. D: <input type="text" name="alt_d" value="<%= questao ? questao.alt_d : '' %>" required></label><br><br>
+
+    <label>Resposta Correta:
+      <select name="correta" required>
+        <% ['a','b','c','d'].forEach(op => { %>
+          <option value="<%= op %>" <%= questao && questao.correta === op ? 'selected' : '' %>><%= op.toUpperCase() %></option>
+        <% }) %>
+      </select>
+    </label><br><br>
+
+    <label>Disciplina:
+      <select name="disciplina_id" required>
+        <option value="">-- Selecione --</option>
+        <% disciplinas.forEach(d => { %>
+          <option value="<%= d.id %>" <%= questao && questao.disciplina_id === d.id ? 'selected' : '' %>><%= d.nome %></option>
+        <% }) %>
+      </select>
+    </label><br><br>
+
+    <button type="submit">Salvar</button>
+    <a href="/questoes">Cancelar</a>
+  </form>
+</body>
+</html>

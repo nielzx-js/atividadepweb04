@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><meta charset="UTF-8"><title>Disciplinas</title></head>
+<body>
+  <h2>Disciplinas</h2>
+  <nav><a href="/">Home</a> | <a href="/questoes">Questões</a> | <a href="/logout">Sair</a></nav>
+  <hr>
+  <a href="/disciplinas/nova">+ Nova Disciplina</a>
+  <br><br>
+  <table border="1" cellpadding="5">
+    <tr>
+      <th>ID</th><th>Nome</th><th>Carga Horária</th><th>Ações</th>
+    </tr>
+    <% disciplinas.forEach(d => { %>
+    <tr>
+      <td><%= d.id %></td>
+      <td><%= d.nome %></td>
+      <td><%= d.carga_horaria %>h</td>
+      <td>
+        <a href="/disciplinas/editar/<%= d.id %>">Editar</a> |
+        <a href="/disciplinas/deletar/<%= d.id %>" onclick="return confirm('Deletar?')">Deletar</a>
+      </td>
+    </tr>
+    <% }) %>
+  </table>
+</body>
+</html>

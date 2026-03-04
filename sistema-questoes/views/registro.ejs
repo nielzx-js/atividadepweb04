@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><meta charset="UTF-8"><title>Registro</title></head>
+<body>
+  <h2>Criar Conta</h2>
+  <% if (erro) { %><p style="color:red"><%= erro %></p><% } %>
+  <form method="POST" action="/registro">
+    <label>Nome: <input type="text" name="nome" required></label><br><br>
+    <label>Email: <input type="email" name="email" required></label><br><br>
+    <label>Senha: <input type="password" name="senha" required></label><br><br>
+    <button type="submit">Registrar</button>
+  </form>
+  <p>Já tem conta? <a href="/login">Login</a></p>
+</body>
+</html>
