@@ -1,14 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head><meta charset="UTF-8"><title>Home</title></head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>eSistema - Home</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 130px;
+      background: #111111;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      flex-shrink: 0;
+    }
+
+    .sidebar .logo {
+      padding: 16px 14px 20px 14px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .sidebar .logo span { color: #f5c400; }
+
+    .sidebar nav { display: flex; flex-direction: column; }
+
+    .sidebar nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 10px 14px;
+      transition: background 0.2s;
+    }
+
+    .sidebar nav a:hover { background: #222; }
+
+    .main {
+      flex: 1;
+      padding: 18px 20px;
+      background: #f0f0f0;
+    }
+
+    .cards { display: flex; gap: 14px; }
+
+    .card {
+      flex: 1;
+      border-radius: 4px;
+      padding: 22px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 90px;
+    }
+
+    .card .number {
+      font-size: 1.9rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .card .label { font-size: 0.85rem; font-weight: 400; }
+
+    .card-black  { background: #111111; color: #ffffff; }
+    .card-gray   { background: #3a4455; color: #ffffff; }
+    .card-yellow { background: #f5c400; color: #ffffff; }
+    .card-yellow .number { font-weight: 800; }
+  </style>
+</head>
 <body>
-  <h2>Bem-vindo, <%= usuario.nome %>!</h2>
-  <nav>
-    <a href="/disciplinas">Disciplinas</a> |
-    <a href="/questoes">Questões</a> |
-    <a href="/logout">Sair</a>
-  </nav>
-  <hr>
-  <p>Selecione uma opção no menu acima.</p>
+
+  <aside class="sidebar">
+    <div class="logo"><span>e</span>Sistema</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/disciplinas">Disciplinas</a>
+      <a href="/questoes">Questões</a>
+        <a href="/usuarios">Usuários</a>
+      <a href="/logout">Sair</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="cards">
+
+      <div class="card card-black">
+        <div class="number"><%= totalUsuarios %></div>
+        <div class="label">Usuários Cadastrados</div>
+      </div>
+
+      <div class="card card-gray">
+        <div class="number"><%= totalDisciplinas %></div>
+        <div class="label">Disciplinas Cadastradas</div>
+      </div>
+
+      <div class="card card-yellow">
+        <div class="number"><%= totalQuestoes %></div>
+        <div class="label">Questões Cadastradas</div>
+      </div>
+
+    </div>
+  </main>
+
 </body>
 </html>

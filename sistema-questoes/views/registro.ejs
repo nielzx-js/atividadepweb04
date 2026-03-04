@@ -1,15 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head><meta charset="UTF-8"><title>Registro</title></head>
+<head>
+<meta charset="UTF-8">
+<title>Registro</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    width: 300px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  input {
+    width: 100%;
+    padding: 6px;
+    margin-top: 4px;
+  }
+
+  button {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  p {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .erro {
+    color: red;
+    text-align: center;
+  }
+</style>
+</head>
+
 <body>
-  <h2>Criar Conta</h2>
-  <% if (erro) { %><p style="color:red"><%= erro %></p><% } %>
-  <form method="POST" action="/registro">
-    <label>Nome: <input type="text" name="nome" required></label><br><br>
-    <label>Email: <input type="email" name="email" required></label><br><br>
-    <label>Senha: <input type="password" name="senha" required></label><br><br>
-    <button type="submit">Registrar</button>
-  </form>
-  <p>Já tem conta? <a href="/login">Login</a></p>
+  <div class="container">
+    <h2>Criar Conta</h2>
+
+    <% if (erro) { %>
+      <p class="erro"><%= erro %></p>
+    <% } %>
+
+    <form method="POST" action="/registro">
+      <label>Nome:</label>
+      <input type="text" name="nome" required>
+
+      <label>Email:</label>
+      <input type="email" name="email" required>
+
+      <label>Senha:</label>
+      <input type="password" name="senha" required>
+
+      <button type="submit">Registrar</button>
+    </form>
+
+    <p>Já tem conta? <a href="/login">Login</a></p>
+  </div>
 </body>
 </html>
